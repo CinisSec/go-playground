@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Files to Case</title>
+</head>
+<body>
+  <h2>Upload Files to a Case</h2>
+
+  <form id="uploadForm" action="/cases/" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="case" value="testcase">
+    <label for="files">Choose files:</label>
+    <input type="file" id="files" name="files" multiple>
+    <br><br>
+
+    <button type="submit">Upload</button>
+  </form>
+</body>
+</html>
