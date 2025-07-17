@@ -35,6 +35,11 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if _, err := fmt.Sscanf(caseID, "%d", &caseID); err != nil {
+		http.Error(w, "Invalid case ID", http.StatusBadRequest)
+		return
+	}
+
 	files := r.MultipartForm.File["files"]
 	uploadDir := filepath.Join("cases", caseID, "uploads")
 
