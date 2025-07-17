@@ -7,9 +7,10 @@
   <h2>Upload Files to a Case</h2>
 
   <form id="uploadForm" action="/cases/" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="case" value="testcase">
+    <input type="text" id="case" name="case" placeholder="Case ID" required>
+    <br><br>
     <label for="files">Choose files:</label>
-    <input type="file" id="files" name="files" multiple>
+    <input type="file" id="files" name="files" multiple required>
     <br><br>
 
     <button type="submit">Upload</button>
