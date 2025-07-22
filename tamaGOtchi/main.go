@@ -1,6 +1,10 @@
 package main
 
+import (
+	"tamaGOtchi/creature"
+)
+
 func main() {
-	tama := newTama()
-	tama.printStats()
+	tama := creature.NewTama()
+	tama.PrintStats()
 }
