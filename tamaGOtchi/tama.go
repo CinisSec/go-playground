@@ -1,4 +1,4 @@
-package tamagotchi
+package main
 
 type Tama struct {
 	// core
@@ -7,14 +7,6 @@ type Tama struct {
 	happiness int
 	energy    int
 	alive     bool
-
-	/* combat stats
-	strength     int
-	agility      int
-	dexterity    int
-	intelligence int
-	luck         int
-	*/
 }
 
 func newTama() *Tama {
@@ -24,13 +16,16 @@ func newTama() *Tama {
 		happiness: 50,  // 0-100
 		energy:    0,
 		alive:     true,
-
-		/*
-			strength:     1,
-			agility:      1,
-			dexterity:    1,
-			intelligence: 1,
-			luck:         1,
-		*/
 	}
+}
+
+func (tama *Tama) printStats() {
+	println("Stats: ")
+	println("----------------")
+	println("Health: ", tama.health)
+	println("Hunger: ", tama.hunger)
+	println("Happiness: ", tama.happiness)
+	println("Energy: ", tama.energy)
+	println("Alive: ", tama.alive)
+	println("----------------")
 }
