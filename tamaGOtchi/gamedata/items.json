@@ -1,0 +1,37 @@
+[
+    {
+        "Id": 1,
+        "Name": "Apple",
+        "Description": "A juicy apple",
+        "EconomicalValue": 5,
+        "InInventory": 0,
+        "Consumable": true,
+        "NutritionalValue": 3
+    },
+    {
+        "Id": 2,
+        "Name": "Banana",
+        "Description": "A ripe banana",
+        "EconomicalValue": 5,
+        "InInventory": 0,
+        "Consumable": true,
+        "NutritionalValue": 5
+    },
+    {
+        "Id": 30,
+        "Name": "Chunk of Meat",
+        "Description": "A big chunk of meat",
+        "EconomicalValue": 20,
+        "InInventory": 0,
+        "Consumable": true,
+        "NutritionalValue": 10
+    },
+    {
+        "Id": 100,
+        "Name": "Book",
+        "Description": "A book about tamaGOtchi",
+        "EconomicalValue": 10,
+        "InInventory": 0,
+        "Consumable": false
+    }
+]
