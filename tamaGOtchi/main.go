@@ -1,14 +1,21 @@
 package main
 
 import (
+	"tamaGOtchi/creature"
 	"tamaGOtchi/items"
 )
 
 func main() {
-	//tama := creature.NewTama()
-	//tama.PrintStats()
+	tama := creature.NewTama()
+	tama.PrintStats()
 
-	items.LoadAllItems()
-	println(items.SearchItem(100).Name)
+	item, _ := items.SearchItem(100)
+	println(item.Name)
+
+	item, _ = items.SearchItem(2)
+	println(item.Name)
+
+	itemid, _ := items.LookupItemId("Book")
+	println(itemid)
 
 }
