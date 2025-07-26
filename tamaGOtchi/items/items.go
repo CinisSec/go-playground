@@ -15,29 +15,48 @@ type Item struct {
 	Consumable      bool
 }
 
-func LoadAllItems() []Item {
-	var items []Item
+var itemCache []Item
+
+func init() {
 	data, err := os.ReadFile("gamedata/items.json")
 	if err != nil {
-		log.Fatal(err)
-	}
-	err = json.Unmarshal(data, &items)
-	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to read items.json: %v", err)
 	}
 
-	// Make sure the index of the array is the same as item Id for quick search.
-	itemMap := make([]Item, items[len(items)-1].Id+1)
-	for _, item := range items {
-		itemMap[item.Id] = item
+	var items []Item
+	if err := json.Unmarshal(data, &items); err != nil {
+		log.Fatalf("Failed to parse items.json: %v", err)
 	}
-	return itemMap
+
+	// Find max ID to size the map properly
+	maxID := 0
+	for _, item := range items {
+		if item.Id > maxID {
+			maxID = item.Id
+		}
+	}
+
+	itemCache = make([]Item, maxID+1)
+	for _, item := range items {
+		itemCache[item.Id] = item
+	}
+
+	log.Printf("Loaded %d items from items.json", len(items))
+
 }
 
-func SearchItem(id int) Item {
-	itemMap := LoadAllItems()
-	if id >= 0 && id < len(itemMap) {
-		return itemMap[id]
+func SearchItem(id int) (Item, bool) {
+	if id >= 0 && id < len(itemCache) && itemCache[id].Name != "" {
+		return itemCache[id], true
 	}
-	return Item{}
+	return Item{}, false
+}
+
+func LookupItemId(name string) (int, bool) {
+	for id, item := range itemCache {
+		if item.Name == name {
+			return id, true
+		}
+	}
+	return 0, false
 }
