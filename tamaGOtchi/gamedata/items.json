@@ -33,5 +33,13 @@
         "EconomicalValue": 10,
         "InInventory": 0,
         "Consumable": false
+    },
+        {
+        "Id": 101,
+        "Name": "Key",
+        "Description": "A mysterious key",
+        "EconomicalValue": 10,
+        "InInventory": 0,
+        "Consumable": false
     }
 ]

@@ -9,15 +9,21 @@ func main() {
 	tama := creature.NewTama()
 	tama.PrintStats()
 
+	items.ListInventory()
+
 	item := items.SearchItem(100)
 	println(item.Name)
 
 	item = items.SearchItem(2)
 	println(item.Name)
 
-	itemid, _ := items.LookupItemId("Book")
+	itemid := items.LookupItemId("Book")
 	println(itemid)
 
-	items.ListInventory()
+	item = items.SearchItem(2)
+	println(item.Name)
+	println(item.Description)
+	println(item.EconomicalValue)
+	println(item.Consumable)
 
 }

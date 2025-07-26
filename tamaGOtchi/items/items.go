@@ -52,11 +52,11 @@ func SearchItem(id int) Item {
 	return Item{}
 }
 
-func LookupItemId(name string) (int, bool) {
+func LookupItemId(name string) int {
 	for id, item := range itemCache {
 		if item.Name == name {
-			return id, true
+			return id
 		}
 	}
-	return 0, false
+	return 0
 }
