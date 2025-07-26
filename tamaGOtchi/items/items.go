@@ -45,11 +45,11 @@ func init() {
 
 }
 
-func SearchItem(id int) (Item, bool) {
+func SearchItem(id int) Item {
 	if id >= 0 && id < len(itemCache) && itemCache[id].Name != "" {
-		return itemCache[id], true
+		return itemCache[id]
 	}
-	return Item{}, false
+	return Item{}
 }
 
 func LookupItemId(name string) (int, bool) {
