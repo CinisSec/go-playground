@@ -15,7 +15,7 @@ type Item struct {
 	Consumable      bool
 }
 
-var itemCache []Item
+var itemCache = make(map[int]Item)
 
 func init() {
 	data, err := os.ReadFile("gamedata/items.json")
@@ -28,15 +28,6 @@ func init() {
 		log.Fatalf("Failed to parse items.json: %v", err)
 	}
 
-	// Find max ID to size the map properly
-	maxID := 0
-	for _, item := range items {
-		if item.Id > maxID {
-			maxID = item.Id
-		}
-	}
-
-	itemCache = make([]Item, maxID+1)
 	for _, item := range items {
 		itemCache[item.Id] = item
 	}
@@ -46,10 +37,11 @@ func init() {
 }
 
 func SearchItem(id int) Item {
-	if id >= 0 && id < len(itemCache) && itemCache[id].Name != "" {
-		return itemCache[id]
+	item, ok := itemCache[id]
+	if !ok || item.Name == "" {
+		return Item{}
 	}
-	return Item{}
+	return item
 }
 
 func LookupItemId(name string) int {
@@ -59,4 +51,10 @@ func LookupItemId(name string) int {
 		}
 	}
 	return 0
+}
+
+func ListItems() {
+	for _, item := range itemCache {
+		println(item.Name)
+	}
 }
